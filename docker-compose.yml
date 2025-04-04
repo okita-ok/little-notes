@@ -1,0 +1,11 @@
+services:
+  api:
+    container_name: little-notes-api
+    build:
+      context: ./api
+    ports:
+      - ${BACKEND_PORT}:${BACKEND_PORT}
+    volumes:
+      - ./backend:/app
+    environment:
+      - NODE_ENV=${NODE_ENV}
