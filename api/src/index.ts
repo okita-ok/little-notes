@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import Fastify from "fastify";
 import path from "path";
 import v1Routes from "./routes/v1";
+import mongoose from "./plugins/mongoose";
 
 // ----- CONFIGURACAO -----
 dotenv.config();
@@ -18,6 +19,7 @@ const PORT = Number(process.env.PORT ?? 7123);
 
 // ----- PLUGINS -----
 server.register(v1Routes, { prefix: "/v1" });
+server.register(mongoose);
 
 // ----- EXECUCAO -----
 server.listen({ port: PORT, host: "0.0.0.0" }, function (err, address) {

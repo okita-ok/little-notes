@@ -3,7 +3,7 @@ import userRoutes from "./user.router";
 // import productRoutes from "./product.routes";
 
 const v1Routes: FastifyPluginAsync = async (fastify) => {
-  fastify.register(userRoutes);
+  fastify.register(userRoutes, { prefix: "/user" });
   //   fastify.register(productRoutes);
 };
 
