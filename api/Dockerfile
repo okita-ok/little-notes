@@ -1,5 +1,10 @@
-# Cria uma imagem baseada na versão 20 (LTS) do node
-FROM node:20-alpine
+# Cria uma imagem baseada na versão LTS Alpine do node
+FROM node:lts-alpine
+
+# Define as portas do servidor
+ARG APP_PORT=7123
+ENV PORT=$APP_PORT
+
 # Cria um diretório onde a instalação será instalada
 RUN mkdir -p /app
 # Muda o diretório atual
@@ -10,7 +15,8 @@ COPY package.json ./
 RUN npm install
 # Copia todo o código necessário para rodar a aplicação
 COPY ./ ./
+
 # Expõe a porta em que a aplicação irá rodar
-EXPOSE 7070
+EXPOSE $PORT
 # Inicializa a aplicação
 CMD [ "sh", "./start.sh" ]
