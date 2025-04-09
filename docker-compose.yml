@@ -10,3 +10,15 @@ services:
     environment:
       - NODE_ENV=${NODE_ENV}
       - PORT=${API_PORT}
+    depends_on:
+      - mongo
+
+  mongo:
+    container_name: little-notes-mongo
+    image: mongo:latest
+    ports:
+      - ${DB_PORT}:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+    command: mongod --quiet --logpath /dev/null
