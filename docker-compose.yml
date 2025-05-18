@@ -22,3 +22,8 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
     command: mongod --quiet --logpath /dev/null
+    volumes:
+      - LN_mongo:/data/db
+
+volumes:
+  LN_mongo:
